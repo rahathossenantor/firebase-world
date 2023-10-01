@@ -1,3 +1,5 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from "../../firebase/firebase.config";
 
 const Login = () => {
     const handleLogIn = (e) => {
@@ -5,6 +7,10 @@ const Login = () => {
         const email = e.target.email.value;
         const pass = e.target.password.value;
         console.log(email, pass);
+
+        signInWithEmailAndPassword(auth, email, pass)
+        .then(res => console.log(res.user))
+        .catch(err => console.log(err));
     }
 
     return (
